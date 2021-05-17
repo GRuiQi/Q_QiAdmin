@@ -1,5 +1,5 @@
 window.base={
-    g_resUrl: 'http://locaohost:8081/v1/',
+    g_resUrl: 'http://localhost:8081/v1/',
 
     getData:function(params){
         if(!params.type){
@@ -10,6 +10,7 @@ window.base={
             type: params.type,
             url:this.g_resUrl + params.url,
             data:params.data,
+            contentType: "application/json",
             beforeSend:function(XMLHttpRequest){
                 if(params.tokenFlag){
                     //在请求头添加token信息
@@ -34,7 +35,7 @@ window.base={
             exp: exp
         };
         //JSON.stringify(obj)  对象转json
-        localStorage.setTime(key,JSON.stringify(obj))
+        localStorage.setItem(key,JSON.stringify(obj))
     },
 
 

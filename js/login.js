@@ -19,17 +19,15 @@ $(function(){
               });     
             return;
         }
-
+        var obj = { ac:username.val(), se:password.val()};
+        var jsonData = JSON.stringify(obj)
         var params = {
-            url: '/app/token',
-            typ: 'post',
-            data:{
-                ac:username.val(),
-                se:password.val()
-            },
+            url: 'app/token',
+            type: 'post',
+            data:jsonData,
             sCallback: function(res){
                 if(res){
-                    window.base.setLocalStorage('token',restoken);
+                    window.base.setLocalStorage('token',res.token);
                     window.location.href = 'index.html'
                 }
             },
